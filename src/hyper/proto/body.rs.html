@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/hyper-0.11.19/src/proto/body.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/hyper-0.11.22/src/proto/body.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>body.rs.html -- source</title>
@@ -297,6 +297,22 @@
 <span id="251">251</span>
 <span id="252">252</span>
 <span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
 </pre><pre class="rust ">
 <span class="kw">use</span> <span class="ident">bytes</span>::<span class="ident">Bytes</span>;
 <span class="kw">use</span> <span class="ident">futures</span>::{<span class="ident">Async</span>, <span class="ident">AsyncSink</span>, <span class="ident">Future</span>, <span class="ident">Poll</span>, <span class="ident">Sink</span>, <span class="ident">StartSend</span>, <span class="ident">Stream</span>};
@@ -348,6 +364,22 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pair</span>() <span class="op">-&gt;</span> (<span class="ident">mpsc</span>::<span class="ident">Sender</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Chunk</span>, ::<span class="ident">Error</span><span class="op">&gt;&gt;</span>, <span class="ident">Body</span>) {
         <span class="kw">let</span> (<span class="ident">tx</span>, <span class="ident">rx</span>) <span class="op">=</span> <span class="ident">channel</span>();
         (<span class="ident">tx</span>.<span class="ident">tx</span>, <span class="ident">rx</span>)
+    }
+
+    <span class="doccomment">/// Returns if this body was constructed via `Body::empty()`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Note</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This does **not** detect if the body stream may be at the end, or</span>
+    <span class="doccomment">/// if the stream will not yield any chunks, in all cases. For instance,</span>
+    <span class="doccomment">/// a streaming body using `chunked` encoding is not able to tell if</span>
+    <span class="doccomment">/// there are more chunks immediately.</span>
+    <span class="attribute">#[<span class="ident">inline</span>]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_empty</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">match</span> <span class="self">self</span>.<span class="number">0</span> {
+            <span class="ident">Inner</span>::<span class="ident">Empty</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
+            _ <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+        }
     }
 }
 
