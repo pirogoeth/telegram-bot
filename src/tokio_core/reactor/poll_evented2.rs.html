@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-core-0.1.15/src/reactor/poll_evented2.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-core-0.1.16/src/reactor/poll_evented2.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>poll_evented2.rs.html -- source</title>
@@ -817,7 +817,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear_write_ready</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">ready</span> <span class="op">=</span> <span class="ident">mio</span>::<span class="ident">Ready</span>::<span class="ident">writable</span>();
 
-        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">read_readiness</span>.<span class="ident">fetch_and</span>(<span class="op">!</span><span class="ident">ready</span>.<span class="ident">as_usize</span>(), <span class="ident">Relaxed</span>);
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">write_readiness</span>.<span class="ident">fetch_and</span>(<span class="op">!</span><span class="ident">ready</span>.<span class="ident">as_usize</span>(), <span class="ident">Relaxed</span>);
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">poll_write_ready</span>()<span class="question-mark">?</span>.<span class="ident">is_ready</span>() {
             <span class="comment">// Notify the current task</span>

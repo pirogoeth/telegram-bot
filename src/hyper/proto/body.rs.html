@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/hyper-0.11.22/src/proto/body.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/hyper-0.11.24/src/proto/body.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>body.rs.html -- source</title>
@@ -313,7 +313,30 @@
 <span id="267">267</span>
 <span id="268">268</span>
 <span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
 </pre><pre class="rust ">
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>;
+
 <span class="kw">use</span> <span class="ident">bytes</span>::<span class="ident">Bytes</span>;
 <span class="kw">use</span> <span class="ident">futures</span>::{<span class="ident">Async</span>, <span class="ident">AsyncSink</span>, <span class="ident">Future</span>, <span class="ident">Poll</span>, <span class="ident">Sink</span>, <span class="ident">StartSend</span>, <span class="ident">Stream</span>};
 <span class="kw">use</span> <span class="ident">futures</span>::<span class="ident">sync</span>::{<span class="ident">mpsc</span>, <span class="ident">oneshot</span>};
@@ -329,11 +352,12 @@
 
 <span class="doccomment">/// A `Stream` for `Chunk`s used in requests and responses.</span>
 <span class="attribute">#[<span class="ident">must_use</span> <span class="op">=</span> <span class="string">&quot;streams do nothing unless polled&quot;</span>]</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Body</span>(<span class="ident">Inner</span>);
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Body</span> {
+    <span class="ident">kind</span>: <span class="ident">Kind</span>,
+}
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">enum</span> <span class="ident">Inner</span> {
+<span class="kw">enum</span> <span class="ident">Kind</span> {
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-proto&quot;</span>)]</span>
     <span class="ident">Tokio</span>(<span class="ident">TokioBody</span>),
     <span class="ident">Chan</span> {
@@ -356,7 +380,7 @@
     <span class="doccomment">/// Return an empty body stream</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">empty</span>() <span class="op">-&gt;</span> <span class="ident">Body</span> {
-        <span class="ident">Body</span>(<span class="ident">Inner</span>::<span class="ident">Empty</span>)
+        <span class="ident">Body</span>::<span class="ident">new</span>(<span class="ident">Kind</span>::<span class="ident">Empty</span>)
     }
 
     <span class="doccomment">/// Return a body stream with an associated sender half</span>
@@ -376,9 +400,30 @@
     <span class="doccomment">/// there are more chunks immediately.</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_empty</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="kw">match</span> <span class="self">self</span>.<span class="number">0</span> {
-            <span class="ident">Inner</span>::<span class="ident">Empty</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
+            <span class="ident">Kind</span>::<span class="ident">Empty</span> <span class="op">=&gt;</span> <span class="bool-val">true</span>,
             _ <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+        }
+    }
+
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">kind</span>: <span class="ident">Kind</span>) <span class="op">-&gt;</span> <span class="ident">Body</span> {
+        <span class="ident">Body</span> {
+            <span class="ident">kind</span>: <span class="ident">kind</span>,
+        }
+    }
+
+    <span class="kw">fn</span> <span class="ident">poll_inner</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Chunk</span><span class="op">&gt;</span>, ::<span class="ident">Error</span><span class="op">&gt;</span> {
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">kind</span> {
+            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-proto&quot;</span>)]</span>
+            <span class="ident">Kind</span>::<span class="ident">Tokio</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">rx</span>) <span class="op">=&gt;</span> <span class="ident">rx</span>.<span class="ident">poll</span>(),
+            <span class="ident">Kind</span>::<span class="ident">Chan</span> { <span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">rx</span>, .. } <span class="op">=&gt;</span> <span class="kw">match</span> <span class="ident">rx</span>.<span class="ident">poll</span>().<span class="ident">expect</span>(<span class="string">&quot;mpsc cannot error&quot;</span>) {
+                <span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(<span class="ident">chunk</span>))) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">Some</span>(<span class="ident">chunk</span>))),
+                <span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">err</span>))) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>),
+                <span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">None</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">None</span>)),
+                <span class="ident">Async</span>::<span class="ident">NotReady</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">NotReady</span>),
+            },
+            <span class="ident">Kind</span>::<span class="ident">Once</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">val</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="ident">val</span>.<span class="ident">take</span>())),
+            <span class="ident">Kind</span>::<span class="ident">Empty</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">None</span>)),
         }
     }
 }
@@ -396,18 +441,15 @@
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Chunk</span><span class="op">&gt;</span>, ::<span class="ident">Error</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="self">self</span>.<span class="number">0</span> {
-            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-proto&quot;</span>)]</span>
-            <span class="ident">Inner</span>::<span class="ident">Tokio</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">rx</span>) <span class="op">=&gt;</span> <span class="ident">rx</span>.<span class="ident">poll</span>(),
-            <span class="ident">Inner</span>::<span class="ident">Chan</span> { <span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">rx</span>, .. } <span class="op">=&gt;</span> <span class="kw">match</span> <span class="ident">rx</span>.<span class="ident">poll</span>().<span class="ident">expect</span>(<span class="string">&quot;mpsc cannot error&quot;</span>) {
-                <span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(<span class="ident">chunk</span>))) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">Some</span>(<span class="ident">chunk</span>))),
-                <span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">err</span>))) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>),
-                <span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">None</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">None</span>)),
-                <span class="ident">Async</span>::<span class="ident">NotReady</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">NotReady</span>),
-            },
-            <span class="ident">Inner</span>::<span class="ident">Once</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">val</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="ident">val</span>.<span class="ident">take</span>())),
-            <span class="ident">Inner</span>::<span class="ident">Empty</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="prelude-val">None</span>)),
-        }
+        <span class="self">self</span>.<span class="ident">poll_inner</span>()
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">Body</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+        <span class="ident">f</span>.<span class="ident">debug_tuple</span>(<span class="string">&quot;Body&quot;</span>)
+            .<span class="ident">field</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">kind</span>)
+            .<span class="ident">finish</span>()
     }
 }
 
@@ -421,7 +463,7 @@
         <span class="ident">close_rx_check</span>: <span class="bool-val">true</span>,
         <span class="ident">tx</span>: <span class="ident">tx</span>,
     };
-    <span class="kw">let</span> <span class="ident">rx</span> <span class="op">=</span> <span class="ident">Body</span>(<span class="ident">Inner</span>::<span class="ident">Chan</span> {
+    <span class="kw">let</span> <span class="ident">rx</span> <span class="op">=</span> <span class="ident">Body</span>::<span class="ident">new</span>(<span class="ident">Kind</span>::<span class="ident">Chan</span> {
         <span class="ident">close_tx</span>: <span class="ident">close_tx</span>,
         <span class="ident">rx</span>: <span class="ident">rx</span>,
     });
@@ -458,24 +500,24 @@
 <span class="macro">feat_server_proto</span><span class="macro">!</span> {
     <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">tokio_proto</span>::<span class="ident">streaming</span>::<span class="ident">Body</span><span class="op">&lt;</span><span class="ident">Chunk</span>, ::<span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">b</span>: <span class="ident">Body</span>) <span class="op">-&gt;</span> <span class="ident">tokio_proto</span>::<span class="ident">streaming</span>::<span class="ident">Body</span><span class="op">&lt;</span><span class="ident">Chunk</span>, ::<span class="ident">Error</span><span class="op">&gt;</span> {
-            <span class="kw">match</span> <span class="ident">b</span>.<span class="number">0</span> {
-                <span class="ident">Inner</span>::<span class="ident">Tokio</span>(<span class="ident">b</span>) <span class="op">=&gt;</span> <span class="ident">b</span>,
-                <span class="ident">Inner</span>::<span class="ident">Chan</span> { <span class="ident">close_tx</span>, <span class="ident">rx</span> } <span class="op">=&gt;</span> {
+            <span class="kw">match</span> <span class="ident">b</span>.<span class="ident">kind</span> {
+                <span class="ident">Kind</span>::<span class="ident">Tokio</span>(<span class="ident">b</span>) <span class="op">=&gt;</span> <span class="ident">b</span>,
+                <span class="ident">Kind</span>::<span class="ident">Chan</span> { <span class="ident">close_tx</span>, <span class="ident">rx</span> } <span class="op">=&gt;</span> {
                     <span class="comment">// disable knowing if the Rx gets dropped, since we cannot</span>
                     <span class="comment">// pass this tx along.</span>
                     <span class="kw">let</span> _ <span class="op">=</span> <span class="ident">close_tx</span>.<span class="ident">send</span>(<span class="bool-val">false</span>);
                     <span class="ident">rx</span>.<span class="ident">into</span>()
                 },
-                <span class="ident">Inner</span>::<span class="ident">Once</span>(<span class="prelude-val">Some</span>(<span class="ident">chunk</span>)) <span class="op">=&gt;</span> <span class="ident">TokioBody</span>::<span class="ident">from</span>(<span class="ident">chunk</span>),
-                <span class="ident">Inner</span>::<span class="ident">Once</span>(<span class="prelude-val">None</span>) <span class="op">|</span>
-                <span class="ident">Inner</span>::<span class="ident">Empty</span> <span class="op">=&gt;</span> <span class="ident">TokioBody</span>::<span class="ident">empty</span>(),
+                <span class="ident">Kind</span>::<span class="ident">Once</span>(<span class="prelude-val">Some</span>(<span class="ident">chunk</span>)) <span class="op">=&gt;</span> <span class="ident">TokioBody</span>::<span class="ident">from</span>(<span class="ident">chunk</span>),
+                <span class="ident">Kind</span>::<span class="ident">Once</span>(<span class="prelude-val">None</span>) <span class="op">|</span>
+                <span class="ident">Kind</span>::<span class="ident">Empty</span> <span class="op">=&gt;</span> <span class="ident">TokioBody</span>::<span class="ident">empty</span>(),
             }
         }
     }
 
     <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">tokio_proto</span>::<span class="ident">streaming</span>::<span class="ident">Body</span><span class="op">&lt;</span><span class="ident">Chunk</span>, ::<span class="ident">Error</span><span class="op">&gt;&gt;</span> <span class="kw">for</span> <span class="ident">Body</span> {
         <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">tokio_body</span>: <span class="ident">tokio_proto</span>::<span class="ident">streaming</span>::<span class="ident">Body</span><span class="op">&lt;</span><span class="ident">Chunk</span>, ::<span class="ident">Error</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">Body</span> {
-            <span class="ident">Body</span>(<span class="ident">Inner</span>::<span class="ident">Tokio</span>(<span class="ident">tokio_body</span>))
+            <span class="ident">Body</span>::<span class="ident">new</span>(<span class="ident">Kind</span>::<span class="ident">Tokio</span>(<span class="ident">tokio_body</span>))
         }
     }
 }
@@ -484,7 +526,7 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">src</span>: <span class="ident">mpsc</span>::<span class="ident">Receiver</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Chunk</span>, ::<span class="ident">Error</span><span class="op">&gt;&gt;</span>) <span class="op">-&gt;</span> <span class="ident">Body</span> {
         <span class="kw">let</span> (<span class="ident">tx</span>, _) <span class="op">=</span> <span class="ident">oneshot</span>::<span class="ident">channel</span>();
-        <span class="ident">Body</span>(<span class="ident">Inner</span>::<span class="ident">Chan</span> {
+        <span class="ident">Body</span>::<span class="ident">new</span>(<span class="ident">Kind</span>::<span class="ident">Chan</span> {
             <span class="ident">close_tx</span>: <span class="ident">tx</span>,
             <span class="ident">rx</span>: <span class="ident">src</span>,
         })
@@ -494,7 +536,7 @@
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Chunk</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Body</span> {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">from</span> (<span class="ident">chunk</span>: <span class="ident">Chunk</span>) <span class="op">-&gt;</span> <span class="ident">Body</span> {
-        <span class="ident">Body</span>(<span class="ident">Inner</span>::<span class="ident">Once</span>(<span class="prelude-val">Some</span>(<span class="ident">chunk</span>)))
+        <span class="ident">Body</span>::<span class="ident">new</span>(<span class="ident">Kind</span>::<span class="ident">Once</span>(<span class="prelude-val">Some</span>(<span class="ident">chunk</span>)))
     }
 }
 
