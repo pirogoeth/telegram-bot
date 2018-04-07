@@ -10,8 +10,11 @@
     <title>telegram_bot_raw::types::reply_markup - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css" id="themeStyle">
+    <script src="../../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Module reply_markup</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li></ul></div><p class='location'><a href='../../index.html'>telegram_bot_raw</a>::<wbr><a href='../index.html'>types</a></p><script>window.sidebarCurrent = {name: 'reply_markup', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -58,9 +68,10 @@
                            <td class='docblock-short'>
                                 <p>Upon receiving a message with this object, Telegram clients will
 display a reply interface to the user (act as if the user has
-selected the bot‘s message and tapped ’Reply&#39;). This can be
+selected the bot‘s message and tapped ’Reply'). This can be
 extremely useful if you want to create user-friendly step-by-step
 interfaces without having to sacrifice privacy mod</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -68,6 +79,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot_raw::types::reply_markup::InlineKeyboardButton'>InlineKeyboardButton</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents one button of an inline keyboard.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -75,6 +87,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot_raw::types::reply_markup::InlineKeyboardMarkup'>InlineKeyboardMarkup</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents an inline keyboard that appears right next to the message it belongs to.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -82,6 +95,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot_raw::types::reply_markup::KeyboardButton'>KeyboardButton</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents one button of the reply keyboard.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -89,6 +103,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot_raw::types::reply_markup::ReplyKeyboardMarkup'>ReplyKeyboardMarkup</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a custom keyboard with reply options.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -100,6 +115,7 @@ the current custom keyboard and display the default letter-keyboard.
 By default, custom keyboards are displayed until a new keyboard is sent
 by a bot. An exception is made for one-time keyboards that are hidden
 immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
+
                            </td>
                        </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
@@ -129,20 +145,22 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

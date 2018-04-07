@@ -10,8 +10,11 @@
     <title>telegram_bot_raw::requests - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -30,9 +33,16 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Module requests</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#modules">Modules</a></li></ul></div><p class='location'><a href='../index.html'>telegram_bot_raw</a></p><script>window.sidebarCurrent = {name: 'requests', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
+        <p class='location'>Module requests</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Re-exports</a></li><li><a href="#modules">Modules</a></li></ul></div><p class='location'><a href='../index.html'>telegram_bot_raw</a></p><script>window.sidebarCurrent = {name: 'requests', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -49,9 +59,9 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/telegram_bot_raw/requests/mod.rs.html#1-55' title='goto source code'>[src]</a></span></h1>
-<h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
-<table><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/_base/index.html" title="mod telegram_bot_raw::requests::_base">_base</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/answer_callback_query/index.html" title="mod telegram_bot_raw::requests::answer_callback_query">answer_callback_query</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/delete_message/index.html" title="mod telegram_bot_raw::requests::delete_message">delete_message</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/edit_message_caption/index.html" title="mod telegram_bot_raw::requests::edit_message_caption">edit_message_caption</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/edit_message_live_location/index.html" title="mod telegram_bot_raw::requests::edit_message_live_location">edit_message_live_location</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/edit_message_reply_markup/index.html" title="mod telegram_bot_raw::requests::edit_message_reply_markup">edit_message_reply_markup</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/edit_message_text/index.html" title="mod telegram_bot_raw::requests::edit_message_text">edit_message_text</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/forward_message/index.html" title="mod telegram_bot_raw::requests::forward_message">forward_message</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_chat/index.html" title="mod telegram_bot_raw::requests::get_chat">get_chat</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_chat_administrators/index.html" title="mod telegram_bot_raw::requests::get_chat_administrators">get_chat_administrators</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_chat_member/index.html" title="mod telegram_bot_raw::requests::get_chat_member">get_chat_member</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_chat_members_count/index.html" title="mod telegram_bot_raw::requests::get_chat_members_count">get_chat_members_count</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_file/index.html" title="mod telegram_bot_raw::requests::get_file">get_file</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_me/index.html" title="mod telegram_bot_raw::requests::get_me">get_me</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_updates/index.html" title="mod telegram_bot_raw::requests::get_updates">get_updates</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_user_profile_photos/index.html" title="mod telegram_bot_raw::requests::get_user_profile_photos">get_user_profile_photos</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/kick_chat_member/index.html" title="mod telegram_bot_raw::requests::kick_chat_member">kick_chat_member</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/leave_chat/index.html" title="mod telegram_bot_raw::requests::leave_chat">leave_chat</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/pin_chat_message/index.html" title="mod telegram_bot_raw::requests::pin_chat_message">pin_chat_message</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_chat_action/index.html" title="mod telegram_bot_raw::requests::send_chat_action">send_chat_action</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_contact/index.html" title="mod telegram_bot_raw::requests::send_contact">send_contact</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_location/index.html" title="mod telegram_bot_raw::requests::send_location">send_location</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_message/index.html" title="mod telegram_bot_raw::requests::send_message">send_message</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_venue/index.html" title="mod telegram_bot_raw::requests::send_venue">send_venue</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/stop_message_live_location/index.html" title="mod telegram_bot_raw::requests::stop_message_live_location">stop_message_live_location</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/unban_chat_member/index.html" title="mod telegram_bot_raw::requests::unban_chat_member">unban_chat_member</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/unpin_chat_message/index.html" title="mod telegram_bot_raw::requests::unpin_chat_message">unpin_chat_message</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+               </span><a class='srclink' href='../../src/telegram_bot_raw/requests/mod.rs.html#1-57' title='goto source code'>[src]</a></span></h1>
+<h2 id='reexports' class='section-header'><a href="#reexports">Re-exports</a></h2>
+<table><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/_base/index.html" title="mod telegram_bot_raw::requests::_base">_base</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/answer_callback_query/index.html" title="mod telegram_bot_raw::requests::answer_callback_query">answer_callback_query</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/delete_message/index.html" title="mod telegram_bot_raw::requests::delete_message">delete_message</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/edit_message_caption/index.html" title="mod telegram_bot_raw::requests::edit_message_caption">edit_message_caption</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/edit_message_live_location/index.html" title="mod telegram_bot_raw::requests::edit_message_live_location">edit_message_live_location</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/edit_message_reply_markup/index.html" title="mod telegram_bot_raw::requests::edit_message_reply_markup">edit_message_reply_markup</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/edit_message_text/index.html" title="mod telegram_bot_raw::requests::edit_message_text">edit_message_text</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/forward_message/index.html" title="mod telegram_bot_raw::requests::forward_message">forward_message</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_chat/index.html" title="mod telegram_bot_raw::requests::get_chat">get_chat</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_chat_administrators/index.html" title="mod telegram_bot_raw::requests::get_chat_administrators">get_chat_administrators</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_chat_member/index.html" title="mod telegram_bot_raw::requests::get_chat_member">get_chat_member</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_chat_members_count/index.html" title="mod telegram_bot_raw::requests::get_chat_members_count">get_chat_members_count</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_file/index.html" title="mod telegram_bot_raw::requests::get_file">get_file</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_me/index.html" title="mod telegram_bot_raw::requests::get_me">get_me</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_updates/index.html" title="mod telegram_bot_raw::requests::get_updates">get_updates</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/get_user_profile_photos/index.html" title="mod telegram_bot_raw::requests::get_user_profile_photos">get_user_profile_photos</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/kick_chat_member/index.html" title="mod telegram_bot_raw::requests::kick_chat_member">kick_chat_member</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/leave_chat/index.html" title="mod telegram_bot_raw::requests::leave_chat">leave_chat</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/pin_chat_message/index.html" title="mod telegram_bot_raw::requests::pin_chat_message">pin_chat_message</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_chat_action/index.html" title="mod telegram_bot_raw::requests::send_chat_action">send_chat_action</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_contact/index.html" title="mod telegram_bot_raw::requests::send_contact">send_contact</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_location/index.html" title="mod telegram_bot_raw::requests::send_location">send_location</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_message/index.html" title="mod telegram_bot_raw::requests::send_message">send_message</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_venue/index.html" title="mod telegram_bot_raw::requests::send_venue">send_venue</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/send_audio/index.html" title="mod telegram_bot_raw::requests::send_audio">send_audio</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/stop_message_live_location/index.html" title="mod telegram_bot_raw::requests::stop_message_live_location">stop_message_live_location</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/unban_chat_member/index.html" title="mod telegram_bot_raw::requests::unban_chat_member">unban_chat_member</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../../telegram_bot_raw/requests/unpin_chat_message/index.html" title="mod telegram_bot_raw::requests::unpin_chat_message">unpin_chat_message</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
                        <tr class=' module-item'>
                            <td><a class="mod" href="_base/index.html"
@@ -187,6 +197,13 @@
                            </td>
                        </tr>
                        <tr class=' module-item'>
+                           <td><a class="mod" href="send_audio/index.html"
+                                  title='mod telegram_bot_raw::requests::send_audio'>send_audio</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
                            <td><a class="mod" href="send_chat_action/index.html"
                                   title='mod telegram_bot_raw::requests::send_chat_action'>send_chat_action</a></td>
                            <td class='docblock-short'>
@@ -254,20 +271,22 @@
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

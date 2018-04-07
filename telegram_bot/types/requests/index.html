@@ -10,8 +10,11 @@
     <title>telegram_bot::types::requests - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css" id="themeStyle">
+    <script src="../../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Module requests</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li></ul></div><p class='location'><a href='../../index.html'>telegram_bot</a>::<wbr><a href='../index.html'>types</a></p><script>window.sidebarCurrent = {name: 'requests', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -60,6 +70,7 @@
                                 <p>Use this method to send answers to callback queries sent from inline keyboards.
 The answer will be displayed to the user as a notification at the top of
 the chat screen or as an alert.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -74,6 +85,7 @@ the chat screen or as an alert.</p>
                                   title='struct telegram_bot::types::requests::EditMessageCaption'>EditMessageCaption</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to edit captions of messages sent by the bot.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -83,6 +95,7 @@ the chat screen or as an alert.</p>
                                 <p>Use this method to edit live location messages sent by the bot.
 A location can be edited until its live_period expires or editing
 is explicitly disabled by a call to stopMessageLiveLocation.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -90,6 +103,7 @@ is explicitly disabled by a call to stopMessageLiveLocation.</p>
                                   title='struct telegram_bot::types::requests::EditMessageReplyMarkup'>EditMessageReplyMarkup</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to edit only the reply markup of messages sent by the bot.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -97,6 +111,7 @@ is explicitly disabled by a call to stopMessageLiveLocation.</p>
                                   title='struct telegram_bot::types::requests::EditMessageText'>EditMessageText</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to edit text messages sent by the bot.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -104,6 +119,7 @@ is explicitly disabled by a call to stopMessageLiveLocation.</p>
                                   title='struct telegram_bot::types::requests::ForwardMessage'>ForwardMessage</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to forward messages of any kind.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -111,6 +127,7 @@ is explicitly disabled by a call to stopMessageLiveLocation.</p>
                                   title='struct telegram_bot::types::requests::GetChat'>GetChat</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to get up to date information about the chat.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -120,6 +137,7 @@ is explicitly disabled by a call to stopMessageLiveLocation.</p>
                                 <p>Use this method to get a list of administrators in a chat.
 If the chat is a group or a supergroup and no administrators were appointed,
 only the creator will be returned.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -127,6 +145,7 @@ only the creator will be returned.</p>
                                   title='struct telegram_bot::types::requests::GetChatMember'>GetChatMember</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to get information about a member of a chat.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -134,6 +153,7 @@ only the creator will be returned.</p>
                                   title='struct telegram_bot::types::requests::GetChatMembersCount'>GetChatMembersCount</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to get the number of members in a chat.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -142,14 +162,16 @@ only the creator will be returned.</p>
                            <td class='docblock-short'>
                                 <p>Use this method to get basic info about a file and prepare it for downloading.
 For the moment, bots can download files of up to 20MB in size.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.GetMe.html"
                                   title='struct telegram_bot::types::requests::GetMe'>GetMe</a></td>
                            <td class='docblock-short'>
-                                <p>A simple method for testing your bot&#39;s auth token. Requires no parameters.
+                                <p>A simple method for testing your bot's auth token. Requires no parameters.
 Returns basic information about the bot in form of a User object.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -157,6 +179,7 @@ Returns basic information about the bot in form of a User object.</p>
                                   title='struct telegram_bot::types::requests::GetUpdates'>GetUpdates</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to receive incoming updates using long polling.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -164,6 +187,7 @@ Returns basic information about the bot in form of a User object.</p>
                                   title='struct telegram_bot::types::requests::GetUserProfilePhotos'>GetUserProfilePhotos</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to get a list of profile pictures for a user.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -174,6 +198,7 @@ Returns basic information about the bot in form of a User object.</p>
 In the case of supergroups, the user will not be able to return to the group on
 their own using invite links, etc., unless unbanned first.
 The bot must be an administrator in the group for this to work.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -181,6 +206,7 @@ The bot must be an administrator in the group for this to work.</p>
                                   title='struct telegram_bot::types::requests::LeaveChat'>LeaveChat</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method for your bot to leave a group, supergroup or channel.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -191,15 +217,25 @@ The bot must be an administrator in the group for this to work.</p>
 The bot must be an administrator in the chat for this to work
 and must have the ‘can_pin_messages’ admin right in the supergroup
 or ‘can_edit_messages’ admin right in the channel.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SendAudio.html"
+                                  title='struct telegram_bot::types::requests::SendAudio'>SendAudio</a></td>
+                           <td class='docblock-short'>
+                                <p>Use this method to send an audio</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.SendChatAction.html"
                                   title='struct telegram_bot::types::requests::SendChatAction'>SendChatAction</a></td>
                            <td class='docblock-short'>
-                                <p>Use this method when you need to tell the user that something is happening on the bot&#39;s side.
+                                <p>Use this method when you need to tell the user that something is happening on the bot's side.
 The status is set for 5 seconds or less (when a message arrives from your bot,
 Telegram clients clear its typing status).</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -207,6 +243,7 @@ Telegram clients clear its typing status).</p>
                                   title='struct telegram_bot::types::requests::SendContact'>SendContact</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to send phone contacts.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -214,6 +251,7 @@ Telegram clients clear its typing status).</p>
                                   title='struct telegram_bot::types::requests::SendLocation'>SendLocation</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to send point on the map.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -221,6 +259,7 @@ Telegram clients clear its typing status).</p>
                                   title='struct telegram_bot::types::requests::SendMessage'>SendMessage</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to send text messages.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -228,6 +267,7 @@ Telegram clients clear its typing status).</p>
                                   title='struct telegram_bot::types::requests::SendVenue'>SendVenue</a></td>
                            <td class='docblock-short'>
                                 <p>Use this method to send information about a venue.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -236,6 +276,7 @@ Telegram clients clear its typing status).</p>
                            <td class='docblock-short'>
                                 <p>Use this method to stop updating a live location message sent by the bot
 before live_period expires.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -245,6 +286,7 @@ before live_period expires.</p>
                                 <p>Use this method to unban a previously kicked user in a supergroup or channel.
 The user will not return to the group or channel automatically, but will be able to
 join via link, etc. The bot must be an administrator in the group for this to work.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -255,6 +297,7 @@ join via link, etc. The bot must be an administrator in the group for this to wo
 The bot must be an administrator in the chat for this to work
 and must have the ‘can_pin_messages’ admin right in the
 supergroup or ‘can_edit_messages’ admin right in the channel.</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -269,20 +312,22 @@ supergroup or ‘can_edit_messages’ admin right in the channel.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

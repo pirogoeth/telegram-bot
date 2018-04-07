@@ -10,8 +10,11 @@
     <title>telegram_bot::types - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -30,9 +33,16 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Module types</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'><a href='../index.html'>telegram_bot</a></p><script>window.sidebarCurrent = {name: 'types', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
+        <p class='location'>Module types</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Re-exports</a></li><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'><a href='../index.html'>telegram_bot</a></p><script>window.sidebarCurrent = {name: 'types', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -51,7 +61,7 @@
                    </a>
                </span><a class='srclink' href='../../src/telegram_bot/types/mod.rs.html#1-23' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Telegram bot types.</p>
-</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Re-exports</a></h2>
 <table><tr><td><code>pub use <a class="mod" href="../../telegram_bot/types/requests/index.html" title="mod telegram_bot::types::requests">requests</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
                        <tr class=' module-item'>
@@ -59,6 +69,7 @@
                                   title='mod telegram_bot::types::requests'>requests</a></td>
                            <td class='docblock-short'>
                                 <p>Telegram Bot API methods.</p>
+
                            </td>
                        </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -67,6 +78,7 @@
                                   title='struct telegram_bot::types::Audio'>Audio</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents an audio file to be treated as music by the Telegram clients.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -74,6 +86,7 @@
                                   title='struct telegram_bot::types::CallbackQuery'>CallbackQuery</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents an incoming callback query from a callback button in an inline keyboard.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -81,6 +94,7 @@
                                   title='struct telegram_bot::types::CallbackQueryId'>CallbackQueryId</a></td>
                            <td class='docblock-short'>
                                 <p>Unique identifier for CallbackQuery.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -88,6 +102,7 @@
                                   title='struct telegram_bot::types::Channel'>Channel</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a channel.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -95,6 +110,7 @@
                                   title='struct telegram_bot::types::ChannelId'>ChannelId</a></td>
                            <td class='docblock-short'>
                                 <p>Unique channel identifier.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -102,6 +118,7 @@
                                   title='struct telegram_bot::types::ChannelPost'>ChannelPost</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a channel message.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -109,6 +126,7 @@
                                   title='struct telegram_bot::types::ChatId'>ChatId</a></td>
                            <td class='docblock-short'>
                                 <p>Unique chat identifier.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -116,6 +134,7 @@
                                   title='struct telegram_bot::types::Contact'>Contact</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a phone contact.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -130,6 +149,7 @@
                                   title='struct telegram_bot::types::Document'>Document</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a general file (as opposed to photos, voice messages and audio files).</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -139,6 +159,7 @@
                                 <p>This object represents a file ready to be downloaded.
 The file can be downloaded via the link <code>https://api.telegram.org/file/bot&lt;token&gt;/&lt;file_path&gt;</code>.
 It is guaranteed that the link will be valid for at least 1 hour.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -146,6 +167,7 @@ It is guaranteed that the link will be valid for at least 1 hour.</p>
                                   title='struct telegram_bot::types::FileRef'>FileRef</a></td>
                            <td class='docblock-short'>
                                 <p>Unique file identifier reference.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -154,9 +176,10 @@ It is guaranteed that the link will be valid for at least 1 hour.</p>
                            <td class='docblock-short'>
                                 <p>Upon receiving a message with this object, Telegram clients will
 display a reply interface to the user (act as if the user has
-selected the bot‘s message and tapped ’Reply&#39;). This can be
+selected the bot‘s message and tapped ’Reply'). This can be
 extremely useful if you want to create user-friendly step-by-step
 interfaces without having to sacrifice privacy mod</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -164,6 +187,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot::types::Forward'>Forward</a></td>
                            <td class='docblock-short'>
                                 <p>Information about the original message.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -171,6 +195,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot::types::Group'>Group</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a group.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -178,6 +203,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot::types::GroupId'>GroupId</a></td>
                            <td class='docblock-short'>
                                 <p>Unique group identifier.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -185,6 +211,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot::types::InlineKeyboardButton'>InlineKeyboardButton</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents one button of an inline keyboard.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -192,6 +219,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot::types::InlineKeyboardMarkup'>InlineKeyboardMarkup</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents an inline keyboard that appears right next to the message it belongs to.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -213,6 +241,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot::types::KeyboardButton'>KeyboardButton</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents one button of the reply keyboard.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -220,6 +249,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot::types::Location'>Location</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a point on the map.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -227,6 +257,7 @@ interfaces without having to sacrifice privacy mod</p>
                                   title='struct telegram_bot::types::Message'>Message</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a chat message.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -235,6 +266,7 @@ interfaces without having to sacrifice privacy mod</p>
                            <td class='docblock-short'>
                                 <p>This object represents one special entity in a text message.
 For example, hashtags, usernames, URLs, etc.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -242,6 +274,7 @@ For example, hashtags, usernames, URLs, etc.</p>
                                   title='struct telegram_bot::types::MessageId'>MessageId</a></td>
                            <td class='docblock-short'>
                                 <p>Unique message identifier inside a chat.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -249,6 +282,7 @@ For example, hashtags, usernames, URLs, etc.</p>
                                   title='struct telegram_bot::types::PhotoSize'>PhotoSize</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents one size of a photo or a file / sticker thumbnail.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -256,6 +290,7 @@ For example, hashtags, usernames, URLs, etc.</p>
                                   title='struct telegram_bot::types::ReplyKeyboardMarkup'>ReplyKeyboardMarkup</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a custom keyboard with reply options.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -267,6 +302,7 @@ the current custom keyboard and display the default letter-keyboard.
 By default, custom keyboards are displayed until a new keyboard is sent
 by a bot. An exception is made for one-time keyboards that are hidden
 immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -274,6 +310,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                                   title='struct telegram_bot::types::Sticker'>Sticker</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a sticker.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -281,6 +318,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                                   title='struct telegram_bot::types::Supergroup'>Supergroup</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a supergroup.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -288,6 +326,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                                   title='struct telegram_bot::types::SupergroupId'>SupergroupId</a></td>
                            <td class='docblock-short'>
                                 <p>Unique supergroup identifier.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -295,6 +334,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                                   title='struct telegram_bot::types::Update'>Update</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents an incoming update.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -302,6 +342,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                                   title='struct telegram_bot::types::User'>User</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a Telegram user or bot.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -309,6 +350,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                                   title='struct telegram_bot::types::UserId'>UserId</a></td>
                            <td class='docblock-short'>
                                 <p>Unique user identifier.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -316,6 +358,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                                   title='struct telegram_bot::types::Venue'>Venue</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a venue.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -323,6 +366,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                                   title='struct telegram_bot::types::Video'>Video</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a video file.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -330,6 +374,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                                   title='struct telegram_bot::types::Voice'>Voice</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a voice note.</p>
+
                            </td>
                        </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
@@ -338,6 +383,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                                   title='enum telegram_bot::types::Chat'>Chat</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a chat.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -346,6 +392,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                            <td class='docblock-short'>
                                 <p>Strongly typed ChatAction. Instead of passing a String to the
 <code>chat_action</code> method, this is used.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -354,6 +401,7 @@ immediately after the user presses a button (see ReplyKeyboardMarkup).</p>
                            <td class='docblock-short'>
                                 <p>Unique identifier for the target chat or username of the
 target channel (in the format @channelusername)</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -361,6 +409,7 @@ target channel (in the format @channelusername)</p>
                                   title='enum telegram_bot::types::ForwardFrom'>ForwardFrom</a></td>
                            <td class='docblock-short'>
                                 <p>Information about the source of the original message.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -368,6 +417,7 @@ target channel (in the format @channelusername)</p>
                                   title='enum telegram_bot::types::MessageChat'>MessageChat</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a private, group or supergroup.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -375,6 +425,7 @@ target channel (in the format @channelusername)</p>
                                   title='enum telegram_bot::types::MessageEntityKind'>MessageEntityKind</a></td>
                            <td class='docblock-short'>
                                 <p>Kind of the entity.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -382,6 +433,7 @@ target channel (in the format @channelusername)</p>
                                   title='enum telegram_bot::types::MessageKind'>MessageKind</a></td>
                            <td class='docblock-short'>
                                 <p>Kind of the message.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -389,6 +441,7 @@ target channel (in the format @channelusername)</p>
                                   title='enum telegram_bot::types::MessageOrChannelPost'>MessageOrChannelPost</a></td>
                            <td class='docblock-short'>
                                 <p>This object represents a chat message or a channel post.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -397,6 +450,7 @@ target channel (in the format @channelusername)</p>
                            <td class='docblock-short'>
                                 <p>Strongly typed ParseMode.
 See <a href="https://core.telegram.org/bots/api#formatting-options">documentation</a> for details.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -411,6 +465,7 @@ See <a href="https://core.telegram.org/bots/api#formatting-options">documentatio
                                   title='enum telegram_bot::types::UpdateKind'>UpdateKind</a></td>
                            <td class='docblock-short'>
                                 <p>Kind of the incoming update.</p>
+
                            </td>
                        </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
@@ -440,6 +495,7 @@ See <a href="https://core.telegram.org/bots/api#formatting-options">documentatio
                                   title='trait telegram_bot::types::ToCallbackQueryId'>ToCallbackQueryId</a></td>
                            <td class='docblock-short'>
                                 <p>Get <code>CallbackQueryId</code> from the type reference.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -447,6 +503,7 @@ See <a href="https://core.telegram.org/bots/api#formatting-options">documentatio
                                   title='trait telegram_bot::types::ToChatRef'>ToChatRef</a></td>
                            <td class='docblock-short'>
                                 <p>Get <code>ChatRef</code> from the type reference.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -454,6 +511,7 @@ See <a href="https://core.telegram.org/bots/api#formatting-options">documentatio
                                   title='trait telegram_bot::types::ToFileRef'>ToFileRef</a></td>
                            <td class='docblock-short'>
                                 <p>Get <code>FileRef</code> from the type reference.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -461,6 +519,7 @@ See <a href="https://core.telegram.org/bots/api#formatting-options">documentatio
                                   title='trait telegram_bot::types::ToMessageId'>ToMessageId</a></td>
                            <td class='docblock-short'>
                                 <p>Get <code>MessageId</code> from the type reference.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -468,6 +527,7 @@ See <a href="https://core.telegram.org/bots/api#formatting-options">documentatio
                                   title='trait telegram_bot::types::ToSourceChat'>ToSourceChat</a></td>
                            <td class='docblock-short'>
                                 <p>Get source <code>ChatId</code> from the type reference.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -475,6 +535,7 @@ See <a href="https://core.telegram.org/bots/api#formatting-options">documentatio
                                   title='trait telegram_bot::types::ToUserId'>ToUserId</a></td>
                            <td class='docblock-short'>
                                 <p>Get <code>UserId</code> from the type reference.</p>
+
                            </td>
                        </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
 <table>
@@ -483,6 +544,7 @@ See <a href="https://core.telegram.org/bots/api#formatting-options">documentatio
                                   title='type telegram_bot::types::Float'>Float</a></td>
                            <td class='docblock-short'>
                                 <p>The Telegram <code>Float</code>, currently f32.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -490,6 +552,7 @@ See <a href="https://core.telegram.org/bots/api#formatting-options">documentatio
                                   title='type telegram_bot::types::Integer'>Integer</a></td>
                            <td class='docblock-short'>
                                 <p>The Telegram <code>Integer</code>, currently i64.</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -504,20 +567,22 @@ See <a href="https://core.telegram.org/bots/api#formatting-options">documentatio
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

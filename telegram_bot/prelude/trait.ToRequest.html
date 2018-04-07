@@ -10,8 +10,11 @@
     <title>telegram_bot::prelude::ToRequest - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait ToRequest</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Request">Request</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.to_request">to_request</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>telegram_bot</a>::<wbr><a href='index.html'>prelude</a></p><script>window.sidebarCurrent = {name: 'ToRequest', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -71,9 +81,9 @@
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><div class='out-of-band'><a class='srclink' href='../../src/telegram_bot_raw/requests/send_venue.rs.html#137-148' title='goto source code'>[src]</a></div><code>impl&lt;'b&gt; ToRequest&lt;'b&gt; for <a class="struct" href="../../telegram_bot/types/struct.Venue.html" title="struct telegram_bot::types::Venue">Venue</a><span class="where fmt-newline">  type <a href='#associatedtype.Request' class="type">Request</a> = <a class="struct" href="../../telegram_bot/types/requests/struct.SendVenue.html" title="struct telegram_bot::types::requests::SendVenue">SendVenue</a>&lt;'b, 'b, 'b&gt;;</span></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='../../src/telegram_bot_raw/requests/send_location.rs.html#91-97' title='goto source code'>[src]</a></div><code>impl&lt;'b&gt; ToRequest&lt;'b&gt; for <a class="struct" href="../../telegram_bot/types/struct.Location.html" title="struct telegram_bot::types::Location">Location</a><span class="where fmt-newline">  type <a href='#associatedtype.Request' class="type">Request</a> = <a class="struct" href="../../telegram_bot/types/requests/struct.SendLocation.html" title="struct telegram_bot::types::requests::SendLocation">SendLocation</a>;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/telegram_bot_raw/requests/send_contact.rs.html#119-129' title='goto source code'>[src]</a></div><code>impl&lt;'b&gt; ToRequest&lt;'b&gt; for <a class="struct" href="../../telegram_bot/types/struct.Contact.html" title="struct telegram_bot::types::Contact">Contact</a><span class="where fmt-newline">  type <a href='#associatedtype.Request' class="type">Request</a> = <a class="struct" href="../../telegram_bot/types/requests/struct.SendContact.html" title="struct telegram_bot::types::requests::SendContact">SendContact</a>&lt;'b, 'b, 'b&gt;;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/telegram_bot_raw/requests/send_location.rs.html#91-97' title='goto source code'>[src]</a></div><code>impl&lt;'b&gt; ToRequest&lt;'b&gt; for <a class="struct" href="../../telegram_bot/types/struct.Location.html" title="struct telegram_bot::types::Location">Location</a><span class="where fmt-newline">  type <a href='#associatedtype.Request' class="type">Request</a> = <a class="struct" href="../../telegram_bot/types/requests/struct.SendLocation.html" title="struct telegram_bot::types::requests::SendLocation">SendLocation</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/telegram_bot_raw/requests/send_venue.rs.html#137-148' title='goto source code'>[src]</a></div><code>impl&lt;'b&gt; ToRequest&lt;'b&gt; for <a class="struct" href="../../telegram_bot/types/struct.Venue.html" title="struct telegram_bot::types::Venue">Venue</a><span class="where fmt-newline">  type <a href='#associatedtype.Request' class="type">Request</a> = <a class="struct" href="../../telegram_bot/types/requests/struct.SendVenue.html" title="struct telegram_bot::types::requests::SendVenue">SendVenue</a>&lt;'b, 'b, 'b&gt;;</span></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/telegram_bot_raw/requests/_base/_base/trait.ToRequest.js">
                  </script></section>
@@ -89,20 +99,22 @@
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 
