@@ -244,7 +244,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;s</span>, <span class="lifetime">&#39;c</span>, <span class="lifetime">&#39;p</span>, <span class="lifetime">&#39;t</span><span class="op">&gt;</span> <span class="ident">SendAudio</span><span class="op">&lt;</span><span class="lifetime">&#39;s</span>, <span class="lifetime">&#39;c</span>, <span class="lifetime">&#39;p</span>, <span class="lifetime">&#39;t</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_audio_url</span><span class="op">&lt;</span><span class="ident">C</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">chat</span>: <span class="ident">C</span>, <span class="ident">url</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="self">Self</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_url</span><span class="op">&lt;</span><span class="ident">C</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">chat</span>: <span class="ident">C</span>, <span class="ident">url</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">C</span>: <span class="ident">ToChatRef</span>,
         <span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;s</span>, <span class="ident">str</span><span class="op">&gt;&gt;</span>,
@@ -329,7 +329,7 @@
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;s</span>, <span class="ident">str</span><span class="op">&gt;&gt;</span>,
     {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">req</span> <span class="op">=</span> <span class="ident">SendAudio</span>::<span class="ident">with_audio_url</span>(<span class="self">self</span>.<span class="ident">to_source_chat</span>(), <span class="ident">url</span>);
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">req</span> <span class="op">=</span> <span class="ident">SendAudio</span>::<span class="ident">with_url</span>(<span class="self">self</span>.<span class="ident">to_source_chat</span>(), <span class="ident">url</span>);
         <span class="ident">req</span>.<span class="ident">reply_to</span>(<span class="self">self</span>);
         <span class="ident">req</span>
     }
@@ -344,13 +344,13 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> <span class="ident">CanSendAudio</span> <span class="kw">for</span> <span class="ident">M</span>
 <span class="kw">where</span>
-    <span class="ident">M</span>: <span class="ident">ToSourceChat</span>,
+    <span class="ident">M</span>: <span class="ident">ToChatRef</span>,
 {
     <span class="kw">fn</span> <span class="ident">send_audio_url</span><span class="op">&lt;</span><span class="lifetime">&#39;s</span>, <span class="lifetime">&#39;c</span>, <span class="lifetime">&#39;p</span>, <span class="lifetime">&#39;t</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">url</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">SendAudio</span><span class="op">&lt;</span><span class="lifetime">&#39;s</span>, <span class="lifetime">&#39;c</span>, <span class="lifetime">&#39;p</span>, <span class="lifetime">&#39;t</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;s</span>, <span class="ident">str</span><span class="op">&gt;&gt;</span>,
     {
-        <span class="ident">SendAudio</span>::<span class="ident">with_audio_url</span>(<span class="self">self</span>.<span class="ident">to_source_chat</span>(), <span class="ident">url</span>)
+        <span class="ident">SendAudio</span>::<span class="ident">with_url</span>(<span class="self">self</span>.<span class="ident">to_chat_ref</span>(), <span class="ident">url</span>)
     }
 }
 </pre>
