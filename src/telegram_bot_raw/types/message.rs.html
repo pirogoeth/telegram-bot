@@ -884,6 +884,36 @@
 <span id="828">828</span>
 <span id="829">829</span>
 <span id="830">830</span>
+<span id="831">831</span>
+<span id="832">832</span>
+<span id="833">833</span>
+<span id="834">834</span>
+<span id="835">835</span>
+<span id="836">836</span>
+<span id="837">837</span>
+<span id="838">838</span>
+<span id="839">839</span>
+<span id="840">840</span>
+<span id="841">841</span>
+<span id="842">842</span>
+<span id="843">843</span>
+<span id="844">844</span>
+<span id="845">845</span>
+<span id="846">846</span>
+<span id="847">847</span>
+<span id="848">848</span>
+<span id="849">849</span>
+<span id="850">850</span>
+<span id="851">851</span>
+<span id="852">852</span>
+<span id="853">853</span>
+<span id="854">854</span>
+<span id="855">855</span>
+<span id="856">856</span>
+<span id="857">857</span>
+<span id="858">858</span>
+<span id="859">859</span>
+<span id="860">860</span>
 </pre><pre class="rust ">
 <span class="kw">use</span> <span class="ident">serde</span>::<span class="ident">de</span>::{<span class="ident">Deserialize</span>, <span class="ident">Deserializer</span>, <span class="ident">Error</span>};
 
@@ -993,6 +1023,8 @@
         <span class="ident">data</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">PhotoSize</span><span class="op">&gt;</span>,
         <span class="doccomment">/// Caption for the photo, 0-200 characters.</span>
         <span class="ident">caption</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
+        <span class="doccomment">/// The unique identifier of a media message group this message belongs to.</span>
+        <span class="ident">media_group_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
     },
     <span class="doccomment">/// Message is a sticker.</span>
     <span class="ident">Sticker</span> {
@@ -1005,6 +1037,8 @@
         <span class="ident">data</span>: <span class="ident">Video</span>,
         <span class="doccomment">/// Caption for the video, 0-200 characters.</span>
         <span class="ident">caption</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
+        <span class="doccomment">/// The unique identifier of a media message group this message belongs to.</span>
+        <span class="ident">media_group_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
     },
     <span class="doccomment">/// Message is a voice message.</span>
     <span class="ident">Voice</span> {
@@ -1162,6 +1196,18 @@
             }}
         }
 
+        <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">maybe_field_with_caption_and_group</span> {
+            (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span>) <span class="op">=&gt;</span> {{
+                <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">val</span>) <span class="op">=</span> <span class="ident">raw</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
+                    <span class="kw">return</span> <span class="ident">make_message</span>(<span class="ident">MessageKind</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span> {
+                        <span class="ident">data</span>: <span class="ident">val</span>,
+                        <span class="ident">caption</span>: <span class="ident">raw</span>.<span class="ident">caption</span>,
+                        <span class="ident">media_group_id</span>: <span class="ident">raw</span>.<span class="ident">media_group_id</span>,
+                    })
+                }
+            }}
+        }
+
         <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">maybe_true_field</span> {
             (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span>) <span class="op">=&gt;</span> {{
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">True</span>) <span class="op">=</span> <span class="ident">raw</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
@@ -1180,9 +1226,9 @@
 
         <span class="macro">maybe_field</span><span class="macro">!</span>(<span class="ident">audio</span>, <span class="ident">Audio</span>);
         <span class="macro">maybe_field_with_caption</span><span class="macro">!</span>(<span class="ident">document</span>, <span class="ident">Document</span>);
-        <span class="macro">maybe_field_with_caption</span><span class="macro">!</span>(<span class="ident">photo</span>, <span class="ident">Photo</span>);
+        <span class="macro">maybe_field_with_caption_and_group</span><span class="macro">!</span>(<span class="ident">photo</span>, <span class="ident">Photo</span>);
         <span class="macro">maybe_field</span><span class="macro">!</span>(<span class="ident">sticker</span>, <span class="ident">Sticker</span>);
-        <span class="macro">maybe_field_with_caption</span><span class="macro">!</span>(<span class="ident">video</span>, <span class="ident">Video</span>);
+        <span class="macro">maybe_field_with_caption_and_group</span><span class="macro">!</span>(<span class="ident">video</span>, <span class="ident">Video</span>);
         <span class="macro">maybe_field</span><span class="macro">!</span>(<span class="ident">voice</span>, <span class="ident">Voice</span>);
         <span class="macro">maybe_field</span><span class="macro">!</span>(<span class="ident">video_note</span>, <span class="ident">VideoNote</span>);
         <span class="macro">maybe_field</span><span class="macro">!</span>(<span class="ident">contact</span>, <span class="ident">Contact</span>);
@@ -1282,6 +1328,18 @@
             }}
         }
 
+        <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">maybe_field_with_caption_and_group</span> {
+            (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span>) <span class="op">=&gt;</span> {{
+                <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">val</span>) <span class="op">=</span> <span class="ident">raw</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
+                    <span class="kw">return</span> <span class="ident">make_message</span>(<span class="ident">MessageKind</span>::<span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span> {
+                        <span class="ident">data</span>: <span class="ident">val</span>,
+                        <span class="ident">caption</span>: <span class="ident">raw</span>.<span class="ident">caption</span>,
+                        <span class="ident">media_group_id</span>: <span class="ident">raw</span>.<span class="ident">media_group_id</span>,
+                    })
+                }
+            }}
+        }
+
         <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">maybe_true_field</span> {
             (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">variant</span>:<span class="ident">ident</span>) <span class="op">=&gt;</span> {{
                 <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">True</span>) <span class="op">=</span> <span class="ident">raw</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span> {
@@ -1300,9 +1358,9 @@
 
         <span class="macro">maybe_field</span><span class="macro">!</span>(<span class="ident">audio</span>, <span class="ident">Audio</span>);
         <span class="macro">maybe_field_with_caption</span><span class="macro">!</span>(<span class="ident">document</span>, <span class="ident">Document</span>);
-        <span class="macro">maybe_field_with_caption</span><span class="macro">!</span>(<span class="ident">photo</span>, <span class="ident">Photo</span>);
+        <span class="macro">maybe_field_with_caption_and_group</span><span class="macro">!</span>(<span class="ident">photo</span>, <span class="ident">Photo</span>);
         <span class="macro">maybe_field</span><span class="macro">!</span>(<span class="ident">sticker</span>, <span class="ident">Sticker</span>);
-        <span class="macro">maybe_field_with_caption</span><span class="macro">!</span>(<span class="ident">video</span>, <span class="ident">Video</span>);
+        <span class="macro">maybe_field_with_caption_and_group</span><span class="macro">!</span>(<span class="ident">video</span>, <span class="ident">Video</span>);
         <span class="macro">maybe_field</span><span class="macro">!</span>(<span class="ident">voice</span>, <span class="ident">Voice</span>);
         <span class="macro">maybe_field</span><span class="macro">!</span>(<span class="ident">video_note</span>, <span class="ident">VideoNote</span>);
         <span class="macro">maybe_field</span><span class="macro">!</span>(<span class="ident">contact</span>, <span class="ident">Contact</span>);
@@ -1381,6 +1439,8 @@
     <span class="kw">pub</span> <span class="ident">reply_to_message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">MessageOrChannelPost</span><span class="op">&gt;&gt;</span>,
     <span class="doccomment">/// Date the message was last edited in Unix time.</span>
     <span class="kw">pub</span> <span class="ident">edit_date</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Integer</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The unique identifier of a media message group this message belongs to.</span>
+    <span class="kw">pub</span> <span class="ident">media_group_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
     <span class="doccomment">/// For text messages, the actual UTF-8 text of the message, 0-4096 characters.</span>
     <span class="kw">pub</span> <span class="ident">text</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
     <span class="doccomment">/// For text messages, special entities like usernames, URLs, bot commands, etc.</span>
