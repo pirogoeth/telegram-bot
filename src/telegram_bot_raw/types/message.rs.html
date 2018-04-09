@@ -1050,7 +1050,7 @@
     <span class="doccomment">/// New chat photo.</span>
     <span class="ident">NewChatPhoto</span> {
         <span class="doccomment">/// A chat photo was change to this value.</span>
-        <span class="ident">data</span>: <span class="ident">PhotoSize</span>,
+        <span class="ident">data</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">PhotoSize</span><span class="op">&gt;</span>,
     },
     <span class="doccomment">/// Service message: the chat photo was deleted.</span>
     <span class="ident">DeleteChatPhoto</span>,
@@ -1418,7 +1418,7 @@
     <span class="doccomment">/// A chat title was changed to this value.</span>
     <span class="kw">pub</span> <span class="ident">new_chat_title</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
     <span class="doccomment">/// A chat photo was change to this value.</span>
-    <span class="kw">pub</span> <span class="ident">new_chat_photo</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PhotoSize</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">new_chat_photo</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">PhotoSize</span><span class="op">&gt;&gt;</span>,
     <span class="doccomment">/// Service message: the chat photo was deleted.</span>
     <span class="kw">pub</span> <span class="ident">delete_chat_photo</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">True</span><span class="op">&gt;</span>,
     <span class="doccomment">/// Service message: the group has been created.</span>
