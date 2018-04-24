@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/base64-0.9.0/src/chunked_encoder.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/base64-0.9.1/src/chunked_encoder.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>chunked_encoder.rs.html -- source</title>
@@ -563,14 +563,11 @@
 <span id="507">507</span>
 <span id="508">508</span>
 <span id="509">509</span>
-<span id="510">510</span>
-<span id="511">511</span>
-<span id="512">512</span>
 </pre><pre class="rust ">
-<span class="kw">use</span> {<span class="ident">Config</span>, <span class="ident">LineEnding</span>, <span class="ident">LineWrap</span>};
 <span class="kw">use</span> <span class="ident">encode</span>::{<span class="ident">add_padding</span>, <span class="ident">encode_to_slice</span>};
 <span class="kw">use</span> <span class="ident">line_wrap</span>::<span class="ident">line_wrap</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>;
+<span class="kw">use</span> {<span class="ident">Config</span>, <span class="ident">LineEnding</span>, <span class="ident">LineWrap</span>};
 
 <span class="doccomment">/// The output mechanism for ChunkedEncoder&#39;s encoded bytes.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Sink</span> {
@@ -736,14 +733,14 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">tests</span> {
     <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">rand</span>;
 
-    <span class="kw">use</span> ::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="ident">tests</span>::<span class="ident">random_config</span>;
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use</span> <span class="ident">tests</span>::<span class="ident">random_config</span>;
+    <span class="kw">use</span> <span class="kw-2">*</span>;
 
     <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">str</span>;
 
-    <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">Rng</span>;
     <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">distributions</span>::{<span class="ident">IndependentSample</span>, <span class="ident">Range</span>};
+    <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">Rng</span>;
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">chunked_encode_empty</span>() {
@@ -986,12 +983,9 @@
             <span class="ident">encode_config_buf</span>(<span class="kw-2">&amp;</span><span class="ident">input_buf</span>, <span class="ident">config</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">output_buf</span>);
 
             <span class="macro">assert_eq</span><span class="macro">!</span>(
-                <span class="ident">output_buf</span>,
-                <span class="ident">chunk_encoded_string</span>,
+                <span class="ident">output_buf</span>, <span class="ident">chunk_encoded_string</span>,
                 <span class="string">&quot;input len={}, config: pad={}, wrap={:?}&quot;</span>,
-                <span class="ident">buf_len</span>,
-                <span class="ident">config</span>.<span class="ident">pad</span>,
-                <span class="ident">config</span>.<span class="ident">line_wrap</span>
+                <span class="ident">buf_len</span>, <span class="ident">config</span>.<span class="ident">pad</span>, <span class="ident">config</span>.<span class="ident">line_wrap</span>
             );
         }
     }

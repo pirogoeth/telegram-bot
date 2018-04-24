@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/base64-0.9.0/src/encode.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/base64-0.9.1/src/encode.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>encode.rs.html -- source</title>
@@ -815,14 +815,9 @@
 <span id="759">759</span>
 <span id="760">760</span>
 <span id="761">761</span>
-<span id="762">762</span>
-<span id="763">763</span>
-<span id="764">764</span>
-<span id="765">765</span>
-<span id="766">766</span>
 </pre><pre class="rust ">
-<span class="kw">use</span> {<span class="ident">line_wrap</span>, <span class="ident">line_wrap_parameters</span>, <span class="ident">Config</span>, <span class="ident">LineWrap</span>, <span class="ident">STANDARD</span>};
 <span class="kw">use</span> <span class="ident">byteorder</span>::{<span class="ident">BigEndian</span>, <span class="ident">ByteOrder</span>};
+<span class="kw">use</span> {<span class="ident">line_wrap</span>, <span class="ident">line_wrap_parameters</span>, <span class="ident">Config</span>, <span class="ident">LineWrap</span>, <span class="ident">STANDARD</span>};
 
 <span class="doccomment">///Encode arbitrary octets as base64.</span>
 <span class="doccomment">///Returns a String.</span>
@@ -841,7 +836,6 @@
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">AsRef</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;&gt;</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
     <span class="ident">encode_config</span>(<span class="ident">input</span>, <span class="ident">STANDARD</span>)
 }
-
 
 <span class="doccomment">///Encode arbitrary octets as base64.</span>
 <span class="doccomment">///Returns a String.</span>
@@ -961,7 +955,6 @@
     <span class="ident">encoded_size</span>
 }
 
-
 <span class="doccomment">/// B64-encode, pad, and line wrap (if configured).</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This helper exists to avoid recalculating encoded_size, which is relatively expensive on short</span>
@@ -1000,7 +993,6 @@
 
     <span class="macro">debug_assert_eq</span><span class="macro">!</span>(<span class="ident">encoded_size</span>, <span class="ident">encoded_bytes</span> <span class="op">+</span> <span class="ident">line_ending_bytes</span>);
 }
-
 
 <span class="doccomment">/// Encode input bytes to utf8 base64 bytes. Does not pad or line wrap.</span>
 <span class="doccomment">/// `output` must be long enough to hold the encoded `input` without padding or line wrapping.</span>
@@ -1153,7 +1145,6 @@
     })
 }
 
-
 <span class="doccomment">/// Write padding characters.</span>
 <span class="doccomment">/// `output` is the slice where padding should be written, of length at least 2.</span>
 <span class="doccomment">///</span>
@@ -1173,15 +1164,15 @@
 <span class="kw">mod</span> <span class="ident">tests</span> {
     <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">rand</span>;
 
-    <span class="kw">use</span> {<span class="ident">CharacterSet</span>, <span class="ident">Config</span>, <span class="ident">LineEnding</span>, <span class="ident">LineWrap</span>, <span class="ident">MIME</span>, <span class="ident">STANDARD</span>, <span class="ident">URL_SAFE_NO_PAD</span>};
-    <span class="kw">use</span> <span class="ident">tests</span>::{<span class="ident">assert_encode_sanity</span>, <span class="ident">random_config</span>};
-    <span class="kw">use</span> <span class="ident">decode</span>::<span class="ident">decode_config_buf</span>;
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use</span> <span class="ident">decode</span>::<span class="ident">decode_config_buf</span>;
+    <span class="kw">use</span> <span class="ident">tests</span>::{<span class="ident">assert_encode_sanity</span>, <span class="ident">random_config</span>};
+    <span class="kw">use</span> {<span class="ident">CharacterSet</span>, <span class="ident">Config</span>, <span class="ident">LineEnding</span>, <span class="ident">LineWrap</span>, <span class="ident">MIME</span>, <span class="ident">STANDARD</span>, <span class="ident">URL_SAFE_NO_PAD</span>};
 
+    <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">distributions</span>::{<span class="ident">IndependentSample</span>, <span class="ident">Range</span>};
+    <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">Rng</span>;
     <span class="kw">use</span> <span class="ident">std</span>;
     <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">str</span>;
-    <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">Rng</span>;
-    <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">distributions</span>::{<span class="ident">IndependentSample</span>, <span class="ident">Range</span>};
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">encoded_size_correct_standard</span>() {
@@ -1477,7 +1468,6 @@
             }
 
             <span class="kw">let</span> <span class="ident">config</span> <span class="op">=</span> <span class="ident">random_config</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">rng</span>, <span class="kw-2">&amp;</span><span class="ident">line_len_range</span>);
-
 
             <span class="comment">// fill up the output buffer with garbage</span>
             <span class="kw">let</span> <span class="ident">encoded_size</span> <span class="op">=</span> <span class="ident">encoded_size</span>(<span class="ident">input_len</span>, <span class="kw-2">&amp;</span><span class="ident">config</span>).<span class="ident">unwrap</span>();

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/base64-0.9.0/src/decode.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/base64-0.9.1/src/decode.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>decode.rs.html -- source</title>
@@ -765,8 +765,8 @@
 <span id="709">709</span>
 <span id="710">710</span>
 </pre><pre class="rust ">
-<span class="kw">use</span> {<span class="ident">tables</span>, <span class="ident">CharacterSet</span>, <span class="ident">Config</span>, <span class="ident">STANDARD</span>};
 <span class="kw">use</span> <span class="ident">byteorder</span>::{<span class="ident">BigEndian</span>, <span class="ident">ByteOrder</span>};
+<span class="kw">use</span> {<span class="ident">tables</span>, <span class="ident">CharacterSet</span>, <span class="ident">Config</span>, <span class="ident">STANDARD</span>};
 
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">error</span>, <span class="ident">fmt</span>, <span class="ident">str</span>};
 
@@ -1301,12 +1301,12 @@
 <span class="kw">mod</span> <span class="ident">tests</span> {
     <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">rand</span>;
 
-    <span class="kw">use</span> <span class="ident">tests</span>::{<span class="ident">assert_encode_sanity</span>, <span class="ident">random_config</span>};
-    <span class="kw">use</span> <span class="ident">encode</span>::<span class="ident">encode_config_buf</span>;
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use</span> <span class="ident">encode</span>::<span class="ident">encode_config_buf</span>;
+    <span class="kw">use</span> <span class="ident">tests</span>::{<span class="ident">assert_encode_sanity</span>, <span class="ident">random_config</span>};
 
-    <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">Rng</span>;
     <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">distributions</span>::{<span class="ident">IndependentSample</span>, <span class="ident">Range</span>};
+    <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">Rng</span>;
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">decode_chunk_precise_writes_only_6_bytes</span>() {
