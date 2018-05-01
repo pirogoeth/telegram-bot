@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/bytes-0.4.6/src/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/bytes-0.4.7/src/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -154,6 +154,7 @@
 <span id="98"> 98</span>
 <span id="99"> 99</span>
 <span id="100">100</span>
+<span id="101">101</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! Provides abstractions for working with bytes.</span>
 <span class="doccomment">//!</span>
@@ -226,7 +227,7 @@
 <span class="doccomment">//! and `BufMut` are infallible.</span>
 
 <span class="attribute">#![<span class="ident">deny</span>(<span class="ident">warnings</span>, <span class="ident">missing_docs</span>, <span class="ident">missing_debug_implementations</span>)]</span>
-<span class="attribute">#![<span class="ident">doc</span>(<span class="ident">html_root_url</span> <span class="op">=</span> <span class="string">&quot;https://docs.rs/bytes/0.4.6&quot;</span>)]</span>
+<span class="attribute">#![<span class="ident">doc</span>(<span class="ident">html_root_url</span> <span class="op">=</span> <span class="string">&quot;https://docs.rs/bytes/0.4.7&quot;</span>)]</span>
 
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">byteorder</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">iovec</span>;
@@ -249,6 +250,7 @@
 <span class="kw">mod</span> <span class="ident">debug</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">bytes</span>::{<span class="ident">Bytes</span>, <span class="ident">BytesMut</span>};
 
+<span class="attribute">#[<span class="ident">deprecated</span>]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">byteorder</span>::{<span class="ident">ByteOrder</span>, <span class="ident">BigEndian</span>, <span class="ident">LittleEndian</span>};
 
 <span class="comment">// Optional Serde support</span>
