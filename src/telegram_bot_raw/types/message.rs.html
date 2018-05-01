@@ -1507,11 +1507,11 @@
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">MessageEntity</span> {
     <span class="doccomment">/// Offset in UTF-16 code units to the start of the entity</span>
-    <span class="ident">offset</span>: <span class="ident">Integer</span>,
+    <span class="kw">pub</span> <span class="ident">offset</span>: <span class="ident">Integer</span>,
     <span class="doccomment">/// Length of the entity in UTF-16 code units</span>
-    <span class="ident">length</span>: <span class="ident">Integer</span>,
+    <span class="kw">pub</span> <span class="ident">length</span>: <span class="ident">Integer</span>,
     <span class="doccomment">/// Kind of the entity.</span>
-    <span class="ident">kind</span>: <span class="ident">MessageEntityKind</span>,
+    <span class="kw">pub</span> <span class="ident">kind</span>: <span class="ident">MessageEntityKind</span>,
 }
 
 <span class="doccomment">/// Kind of the entity.</span>
