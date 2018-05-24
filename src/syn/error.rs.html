@@ -4,16 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-0.13.4/src/error.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/syn-0.14.0/src/error.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>error.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
+          id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
     <script src="../../storage.js"></script>
     
 
@@ -139,7 +140,7 @@
 <span class="doccomment">/// An error with a default error message.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// NOTE: We should provide better error messages in the future.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_error</span><span class="op">&lt;</span><span class="ident">O</span><span class="op">&gt;</span>() <span class="op">-&gt;</span> <span class="ident">PResult</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">O</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_error</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">O</span><span class="op">&gt;</span>() <span class="op">-&gt;</span> <span class="ident">PResult</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">O</span><span class="op">&gt;</span> {
     <span class="prelude-val">Err</span>(<span class="ident">ParseError</span>(<span class="prelude-val">None</span>))
 }
 

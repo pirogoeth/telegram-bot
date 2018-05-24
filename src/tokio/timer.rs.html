@@ -4,16 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-0.1.5/src/timer.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-0.1.6/src/timer.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>timer.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
+          id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
     <script src="../../storage.js"></script>
     
 
@@ -139,6 +140,7 @@
 <span id="83">83</span>
 <span id="84">84</span>
 <span id="85">85</span>
+<span id="86">86</span>
 </pre><pre class="rust ">
 <span class="doccomment">//! Utilities for tracking time.</span>
 <span class="doccomment">//!</span>
@@ -222,6 +224,7 @@
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">tokio_timer</span>::{
     <span class="ident">Deadline</span>,
     <span class="ident">DeadlineError</span>,
+    <span class="ident">Error</span>,
     <span class="ident">Interval</span>,
     <span class="ident">Delay</span>,
 };

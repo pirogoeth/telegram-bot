@@ -10,10 +10,11 @@
     <title>syn - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css"
+          id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../dark.css">
-    <link rel="stylesheet" type="text/css" href="../main.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle">
     <script src="../storage.js"></script>
     
 
@@ -54,13 +55,11 @@
         </form>
     </nav>
 
-    <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>syn</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>syn</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/syn/lib.rs.html#9-728' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Syn is a parsing library for parsing a stream of Rust tokens into a syntax
+               </span><a class='srclink' href='../src/syn/lib.rs.html#9-751' title='goto source code'>[src]</a></span></h1><div class='docblock'><p>Syn is a parsing library for parsing a stream of Rust tokens into a syntax
 tree of Rust source code.</p>
 <p>Currently this library is geared toward the <a href="https://github.com/rust-lang/rfcs/blob/master/text/1681-macros-1.1.md">custom derive</a> use case but
 contains some APIs that may be useful for Rust procedural macros more
@@ -113,8 +112,8 @@ get to execute arbitrary Rust code to figure out what to do with those
 tokens, then hand some tokens back to the compiler to compile into the
 user's crate.</p>
 <pre><code class="language-toml">[dependencies]
-syn = &quot;0.13&quot;
-quote = &quot;0.5&quot;
+syn = &quot;0.14&quot;
+quote = &quot;0.6&quot;
 
 [lib]
 proc-macro = true
@@ -358,6 +357,14 @@ succeeds.</p>
                                   title='macro syn::cond_reduce'>cond_reduce</a></td>
                            <td class='docblock-short'>
                                 <p>Execute a parser only if a condition is met, otherwise fail to parse.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.custom_keyword.html"
+                                  title='macro syn::custom_keyword'>custom_keyword</a></td>
+                           <td class='docblock-short'>
+                                <p>Parse the given word as a keyword.</p>
 
                            </td>
                        </tr>

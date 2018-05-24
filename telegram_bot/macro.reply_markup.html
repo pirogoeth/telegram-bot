@@ -10,10 +10,11 @@
     <title>telegram_bot::reply_markup - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css"
+          id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../dark.css">
-    <link rel="stylesheet" type="text/css" href="../main.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle">
     <script src="../storage.js"></script>
     
 
@@ -33,7 +34,7 @@
     <nav class="sidebar">
         <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'><a href='index.html'>telegram_bot</a></p><script>window.sidebarCurrent = {name: 'reply_markup', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <div class="sidebar-elems"><p class='location'><a href='index.html'>telegram_bot</a></p><script>window.sidebarCurrent = {name: 'reply_markup', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <div class="theme-picker">
@@ -54,13 +55,11 @@
         </form>
     </nav>
 
-    <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Macro <a href='index.html'>telegram_bot</a>::<wbr><a class="macro" href=''>reply_markup</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Macro <a href='index.html'>telegram_bot</a>::<wbr><a class="macro" href=''>reply_markup</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/telegram_bot/macros.rs.html#33-122' title='goto source code'>[src]</a></span></h1>
-<pre class="rust macro">
+               </span><a class='srclink' href='../src/telegram_bot/macros.rs.html#33-122' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class="rust macro">
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">reply_markup</span> {
     (<span class="ident">remove_keyboard</span>) <span class="op">=&gt;</span> { ... };
     (<span class="ident">remove_keyboard</span>, <span class="ident">selective</span>) <span class="op">=&gt;</span> { ... };
@@ -86,7 +85,7 @@
     (<span class="ident">_inline_keyboard_row</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">content</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) <span class="op">=&gt;</span> { ... };
     (<span class="ident">_inline_keyboard_button</span>, <span class="ident">callback</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">text</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">callback</span>:<span class="ident">expr</span>) <span class="op">=&gt;</span> { ... };
 }</pre>
-<div class='docblock'><p>Create a reply markup.</p>
+</div><div class='docblock'><p>Create a reply markup.</p>
 <h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <pre class="rust rust-example-rendered">
 <span class="kw">let</span> <span class="ident">reply_keyboard</span> <span class="op">=</span> <span class="macro">reply_markup</span><span class="macro">!</span>(<span class="ident">reply_keyboard</span>, <span class="ident">selective</span>, <span class="ident">one_time</span>, <span class="ident">resize</span>,

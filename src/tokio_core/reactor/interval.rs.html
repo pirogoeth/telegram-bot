@@ -10,10 +10,11 @@
     <title>interval.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css"
+          id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../../main.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle">
     <script src="../../../storage.js"></script>
     
 
@@ -179,7 +180,7 @@
 
     <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span>()<span class="op">&gt;</span>, <span class="ident">io</span>::<span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">new</span>.<span class="ident">poll</span>()
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">async</span><span class="op">|</span> <span class="ident">async</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">option</span><span class="op">|</span> <span class="ident">option</span>.<span class="ident">map</span>(<span class="op">|</span>_<span class="op">|</span> ())))
+            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">async</span><span class="op">|</span> <span class="ident">async</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">option</span><span class="op">|</span> <span class="ident">option</span>.<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())))
             .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">err</span><span class="op">|</span> <span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(<span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">Other</span>, <span class="ident">err</span>))
     }
 }

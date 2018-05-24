@@ -4,16 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-0.1.5/src/executor/current_thread/scheduler.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-0.1.6/src/executor/current_thread/scheduler.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>scheduler.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle">
+    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css"
+          id="mainThemeStyle">
     
     <link rel="stylesheet" type="text/css" href="../../../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../../../main.css" id="themeStyle">
+    <link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle">
     <script src="../../../../storage.js"></script>
     
 
@@ -801,6 +802,31 @@
 <span id="745">745</span>
 <span id="746">746</span>
 <span id="747">747</span>
+<span id="748">748</span>
+<span id="749">749</span>
+<span id="750">750</span>
+<span id="751">751</span>
+<span id="752">752</span>
+<span id="753">753</span>
+<span id="754">754</span>
+<span id="755">755</span>
+<span id="756">756</span>
+<span id="757">757</span>
+<span id="758">758</span>
+<span id="759">759</span>
+<span id="760">760</span>
+<span id="761">761</span>
+<span id="762">762</span>
+<span id="763">763</span>
+<span id="764">764</span>
+<span id="765">765</span>
+<span id="766">766</span>
+<span id="767">767</span>
+<span id="768">768</span>
+<span id="769">769</span>
+<span id="770">770</span>
+<span id="771">771</span>
+<span id="772">772</span>
 </pre><pre class="rust ">
 <span class="kw">use</span> <span class="kw">super</span>::<span class="ident">Borrow</span>;
 <span class="kw">use</span> <span class="ident">tokio_executor</span>::<span class="ident">Enter</span>;
@@ -885,7 +911,7 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">U</span>: <span class="ident">Sync</span> <span class="op">+</span> <span class="ident">Send</span><span class="op">&gt;</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">Inner</span><span class="op">&lt;</span><span class="ident">U</span><span class="op">&gt;</span> {}
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">U</span>: <span class="ident">Unpark</span><span class="op">&gt;</span> <span class="ident">executor</span>::<span class="ident">Notify</span> <span class="kw">for</span> <span class="ident">Inner</span><span class="op">&lt;</span><span class="ident">U</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">notify</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, _: <span class="ident">usize</span>) {
+    <span class="kw">fn</span> <span class="ident">notify</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw">_</span>: <span class="ident">usize</span>) {
         <span class="self">self</span>.<span class="ident">unpark</span>.<span class="ident">unpark</span>();
     }
 }
@@ -959,7 +985,7 @@
         <span class="kw">let</span> <span class="ident">inner</span> <span class="op">=</span> <span class="ident">Arc</span>::<span class="ident">new</span>(<span class="ident">Inner</span> {
             <span class="ident">unpark</span>,
             <span class="ident">tick_num</span>: <span class="ident">AtomicUsize</span>::<span class="ident">new</span>(<span class="number">0</span>),
-            <span class="ident">head_readiness</span>: <span class="ident">AtomicPtr</span>::<span class="ident">new</span>(<span class="ident">stub_ptr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> _),
+            <span class="ident">head_readiness</span>: <span class="ident">AtomicPtr</span>::<span class="ident">new</span>(<span class="ident">stub_ptr</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>),
             <span class="ident">tail_readiness</span>: <span class="ident">UnsafeCell</span>::<span class="ident">new</span>(<span class="ident">stub_ptr</span>),
             <span class="ident">stub</span>: <span class="ident">stub</span>,
         });
@@ -998,6 +1024,15 @@
         <span class="comment">// items are ready. To do that we unconditionally enqueue it for</span>
         <span class="comment">// polling here.</span>
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">enqueue</span>(<span class="ident">ptr</span>);
+    }
+
+    <span class="doccomment">/// Returns `true` if there are currently any pending futures</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_pending_futures</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+        <span class="comment">// See function definition for why the unsafe is needed and</span>
+        <span class="comment">// correctly used here</span>
+        <span class="kw">unsafe</span> {
+            <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">has_pending_futures</span>()
+        }
     }
 
     <span class="doccomment">/// Advance the scheduler state, returning `true` if any futures were</span>
@@ -1145,7 +1180,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tick</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
         <span class="comment">// Tick the future</span>
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">task</span>.<span class="number">0</span>.<span class="ident">poll_future_notify</span>(<span class="self">self</span>.<span class="ident">notify</span>, <span class="number">0</span>) {
-            <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">Ready</span>(_)) <span class="op">|</span> <span class="prelude-val">Err</span>(_) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
+            <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">Ready</span>(<span class="kw">_</span>)) <span class="op">|</span> <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
             <span class="prelude-val">Ok</span>(<span class="ident">Async</span>::<span class="ident">NotReady</span>) <span class="op">=&gt;</span> <span class="bool-val">false</span>,
         };
 
@@ -1237,10 +1272,26 @@
             (<span class="kw-2">*</span><span class="ident">node</span>).<span class="ident">next_readiness</span>.<span class="ident">store</span>(<span class="ident">ptr</span>::<span class="ident">null_mut</span>(), <span class="ident">Relaxed</span>);
 
             <span class="comment">// Note that these atomic orderings come from 1024cores</span>
-            <span class="kw">let</span> <span class="ident">node</span> <span class="op">=</span> <span class="ident">node</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> _;
+            <span class="kw">let</span> <span class="ident">node</span> <span class="op">=</span> <span class="ident">node</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw">_</span>;
             <span class="kw">let</span> <span class="ident">prev</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">head_readiness</span>.<span class="ident">swap</span>(<span class="ident">node</span>, <span class="ident">AcqRel</span>);
             (<span class="kw-2">*</span><span class="ident">prev</span>).<span class="ident">next_readiness</span>.<span class="ident">store</span>(<span class="ident">node</span>, <span class="ident">Release</span>);
         }
+    }
+
+    <span class="doccomment">/// Returns `true` if there are currently any pending futures</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// See `dequeue` for an explanation why this function is unsafe.</span>
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">has_pending_futures</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+        <span class="kw">let</span> <span class="ident">tail</span> <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">tail_readiness</span>.<span class="ident">get</span>();
+        <span class="kw">let</span> <span class="ident">next</span> <span class="op">=</span> (<span class="kw-2">*</span><span class="ident">tail</span>).<span class="ident">next_readiness</span>.<span class="ident">load</span>(<span class="ident">Acquire</span>);
+
+        <span class="kw">if</span> <span class="ident">tail</span> <span class="op">==</span> <span class="self">self</span>.<span class="ident">stub</span>() {
+            <span class="kw">if</span> <span class="ident">next</span>.<span class="ident">is_null</span>() {
+                <span class="kw">return</span> <span class="bool-val">false</span>;
+            }
+        }
+
+        <span class="bool-val">true</span>
     }
 
     <span class="doccomment">/// The dequeue function from the 1024cores intrusive MPSC queue algorithm</span>
@@ -1284,7 +1335,7 @@
             <span class="kw">return</span> <span class="ident">Dequeue</span>::<span class="ident">Data</span>(<span class="ident">tail</span>);
         }
 
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">head_readiness</span>.<span class="ident">load</span>(<span class="ident">Acquire</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> _ <span class="op">!=</span> <span class="ident">tail</span> {
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">head_readiness</span>.<span class="ident">load</span>(<span class="ident">Acquire</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="kw">_</span> <span class="op">!=</span> <span class="ident">tail</span> {
             <span class="kw">return</span> <span class="ident">Dequeue</span>::<span class="ident">Inconsistent</span>;
         }
 
