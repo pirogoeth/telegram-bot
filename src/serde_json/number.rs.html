@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.21/src/number.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>number.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.24/src/number.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>number.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -770,11 +770,6 @@
 <span id="770">770</span>
 <span id="771">771</span>
 <span id="772">772</span>
-<span id="773">773</span>
-<span id="774">774</span>
-<span id="775">775</span>
-<span id="776">776</span>
-<span id="777">777</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright 2017 Serde Developers</span>
 <span class="comment">//</span>
@@ -788,7 +783,6 @@
 <span class="kw">use</span> <span class="ident">serde</span>::<span class="ident">de</span>::{<span class="self">self</span>, <span class="ident">Unexpected</span>, <span class="ident">Visitor</span>};
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Deserializer</span>, <span class="ident">Serialize</span>, <span class="ident">Serializer</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>::{<span class="self">self</span>, <span class="ident">Debug</span>, <span class="ident">Display</span>};
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">i64</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;arbitrary_precision&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">dtoa</span>;
@@ -842,10 +836,8 @@
     <span class="doccomment">/// # #[macro_use]</span>
     <span class="doccomment">/// # extern crate serde_json;</span>
     <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use std::i64;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// let big = i64::MAX as u64 + 10;</span>
+    <span class="doccomment">/// let big = i64::max_value() as u64 + 10;</span>
     <span class="doccomment">/// let v = json!({ &quot;a&quot;: 64, &quot;b&quot;: big, &quot;c&quot;: 256.0 });</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// assert!(v[&quot;a&quot;].is_i64());</span>
@@ -948,10 +940,8 @@
     <span class="doccomment">/// # #[macro_use]</span>
     <span class="doccomment">/// # extern crate serde_json;</span>
     <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use std::i64;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// let big = i64::MAX as u64 + 10;</span>
+    <span class="doccomment">/// let big = i64::max_value() as u64 + 10;</span>
     <span class="doccomment">/// let v = json!({ &quot;a&quot;: 64, &quot;b&quot;: big, &quot;c&quot;: 256.0 });</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// assert_eq!(v[&quot;a&quot;].as_i64(), Some(64));</span>
